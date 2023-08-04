@@ -15,7 +15,8 @@ telescope.setup {
       n = {
         ['q'] = actions.close
       }
-    }
+    },
+    file_ignore_patterns = {"%.git/.*"}
   },
   extensions = {
     file_browser = {
@@ -47,7 +48,8 @@ local opts = { noremap = true, silent = true }
 --vim.keymap.set('n', ';f', '<cmd>lua require("telescope.builtin").find_files({no_ignore = false, hidden = true})<cr>', opts)
 --vim.keymap.set('n', ';f', '<cmd>lua require("telescope.builtin").find_files({no_ignore = false, hidden = true, file_ignore_patterns = {"node_modules/.*"}})<cr>', opts)
 --configuracion para excluir del find_files los archivos de la carpeta node_modules
-vim.keymap.set('n', ';f', '<cmd>lua require("telescope.builtin").find_files({no_ignore = false, hidden = true, file_ignore_patterns = {"node_modules/*"}})<cr>', opts)
+-- SI QUIERO QUE TAMBIEN AGREGUE LOS ARCHIVOS OCULTOS MODIFICAR EL "hidden = true" por el momento lo descativo porque eso agrega todos los archivos de la carpeta .git
+vim.keymap.set('n', ';f', '<cmd>lua require("telescope.builtin").find_files({no_ignore = false, hidden = false, file_ignore_patterns = {"node_modules/*"}, git_ignore = true})<cr>', opts)
 vim.keymap.set('n', ';r', '<cmd>lua require("telescope.builtin").live_grep()<cr>', opts)
 vim.keymap.set('n', ';b', '<cmd>lua require("telescope.builtin").buffers()<cr>', opts)
 vim.keymap.set('n', ';t', '<cmd>lua require("telescope.builtin").help_tags()<cr>', opts)

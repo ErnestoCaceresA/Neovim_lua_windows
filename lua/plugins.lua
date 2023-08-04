@@ -36,4 +36,10 @@ packer.startup(function(use)
   use 'jose-elias-alvarez/null-ls.nvim' -- use neovim as a language server to inject LSP diagnostics, code actions, and more via lua
   use 'MunifTanjim/prettier.nvim' -- Prettier plugin for Neovim's built-in LSP client
   use 'lewis6991/gitsigns.nvim' -- git signs
+  use 'dinhhuy258/git.nvim' -- For git blame & browse
+  use 'williamboman/mason.nvim' -- mason para mas servidores lsp como tailwind
+  use 'williamboman/mason-lspconfig.nvim'
+  use 'VonHeikemen/lsp-zero.nvim' --LSP
+  use 'nvim-tree/nvim-tree.lua' --nvim tree
+  use 'numToStr/Comment.nvim' --comments
 end)

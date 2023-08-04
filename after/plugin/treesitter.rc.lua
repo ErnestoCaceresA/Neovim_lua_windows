@@ -16,7 +16,9 @@ ts.setup {
     'lua',
     'css',
     'markdown', --para hover de lspsaga
-    'markdown_inline' --para hover de lspsaga
+    'markdown_inline', --para hover de lspsaga
+    'python',
+    'javascript'
   },
   autotag = {
     enable = true,

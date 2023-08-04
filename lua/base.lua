@@ -44,8 +44,52 @@ vim.cmd([[let &t_Ce = "\e[4:0m"]])
 -- Add astericks in block comments
 vim.opt.formatoptions:append {'r'}
 
+-- ========
+-- MIOS
+-- ========
+
+--Activar pliegues
+vim.wo.foldmethod = "indent" --por indentacion
+vim.wo.foldlevel = 2 --nivel predeterminado de plegado en 2 
+vim.api.nvim_set_keymap('n', '<Space>c', 'zR', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Space>d', 'za', { noremap = true, silent = true })
+-- Guardar los valores de pliegue antes de cerrar el archivo
+vim.api.nvim_command('autocmd BufWinLeave * let g:lastfoldmethod = &foldmethod | let g:lastfoldexpr = &foldexpr | let g:lastfoldcolumn = &foldcolumn | let g:lastfoldlevel = &foldlevel')
+-- Restaurar los valores de pliegue al abrir el archivo
+vim.api.nvim_command('autocmd BufWinEnter * if exists("g:lastfoldmethod") | let &l:foldmethod = g:lastfoldmethod | endif | if exists("g:lastfoldexpr") | let &l:foldexpr = g:lastfoldexpr | endif | if exists("g:lastfoldcolumn") | let &l:foldcolumn = g:lastfoldcolumn | endif | if exists("g:lastfoldlevel") | let &l:foldlevel = g:lastfoldlevel | endif')
+
 
 
 
 vim.api.nvim_command('set relativenumber') --para numeros relativos
+-- para modo insertar
+vim.api.nvim_set_keymap('i', '<C-l>', '<right>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '<C-b>', '<C-w>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '<C-h>', '<left>', {noremap = true, silent = true})
+
+-- MOVER BLOQUES DE CODIGO
+vim.api.nvim_set_keymap('x', 'K', ":move '<-2<CR>gv-gv", {noremap = true, silent = true})
+vim.api.nvim_set_keymap('x', 'J', ":move '>+1<CR>gv-gv", {noremap = true, silent = true})
+vim.api.nvim_set_keymap('x', 'K', ":move '<-2<CR>gv-gv", {noremap = true, silent = true})
+vim.api.nvim_set_keymap('x', 'J', ":move '>+1<CR>gv-gv", {noremap = true, silent = true})
+
+vim.api.nvim_set_keymap('n', '<Space>w', ':w<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Space>q', ':q<CR>', {noremap = true, silent = true})
+
+-- Indentacion
+vim.g.indentLine_char = '▏'
+
+
+-- movilidad
+vim.api.nvim_set_keymap('n', '<Space>h', '0', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Space>l', '$', { noremap = true, silent = true })
+
+-- Prettier
+vim.api.nvim_set_keymap('n', '<Space>a', ':Prettier<CR>', { noremap = true, silent = true })
+
+-- Cerrar buffers
+vim.api.nvim_set_keymap('n', '<Space>bd', ':bdelete<CR>', { noremap = true, silent = true })
+
+
+
 

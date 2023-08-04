@@ -14,32 +14,23 @@ local on_attach = function(client, bufnr)
 end
 
 
--- typescript configuration
+-- TYPESCRIPT CONFIGURATION
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.txs" },
+  filetypes = { "typescript", "typescriptreact", "typescript.txs", "javascript", "javascript.jsx" },
   cmd = { "typescript-language-server", "--stdio" }
 }
 require'lspconfig'.tsserver.setup{}
 
+--PYTHON CONFIGURATION
+--require'lspconfig'.pylsp.setup{} --not working yet
+require'lspconfig'.pyright.setup{}
+require'lspconfig'.pylyzer.setup{}
+
+-- EMMET CONFIGURATION
+require'lspconfig'.emmet_ls.setup{}
+
 -- lua configuration
---[[nvim_lsp.summeko_lua.setup { 
-  on_attach = on_attach,
-  settings = {
-    Lua = {
-      diagnostics = {
-        -- Get the language server to recognize the 'vim' global
-        globals = { 'vim' }
-      },
-
-      workspace = {
-        -- Make the server aware of neovim runtine files
-        library = vim.api.nvim_get_runtime_file("", true)
-      }
-    }
-  }
-}]]
-
 require'lspconfig'.lua_ls.setup {
   settings = {
     Lua = {
