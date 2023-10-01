@@ -26,6 +26,7 @@ la configuracion de estos se encuentra en el archivo lspconfig.rc.lua
 * instalar pip install pylyzer
 * instalar npm install -g @tailwindcss/language-server
 * instalar con el comando npm install -g eslint_d   -> esto sirve para el null-ls para darle formato a codigo
+* instalar emmet-ls con el comando "npm install -g emmet-ls"
 
 
 
